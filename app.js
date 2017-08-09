@@ -1,10 +1,30 @@
-const express = require('express')
-const app = express()
+var express = require('express')
+var app = express()
+var router = express.Router();
+var path = __dirname + '/pages/';
 
-app.get('/', function (req, res) {
-    res.send("Here's some text!!")
-})
+// Code below grabbed from:
+// https://www.codementor.io/codeforgeek/build-website-from-scratch-using-expressjs-and-bootstrap-du107sby7
+// (with some contextual changes)
+router.use(function (req,res,next) {
+  console.log("/" + req.method);
+  next();
+});
 
-app.listen(3000, function () {
-    console.log("App listening in to port 3000")
-})
+router.get("/",function(req,res){
+  res.sendFile(path + "index.html");
+});
+
+router.get("/about",function(req,res){
+  res.sendFile(path + "about.html");
+});
+
+app.use("/",router);
+
+app.use("*",function(req,res){
+  res.sendFile(path + "404.html");
+});
+
+app.listen(3000,function(){
+  console.log("Live at Port 3000");
+});
