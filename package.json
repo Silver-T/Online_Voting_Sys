@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Silver-T/online_voting_sys#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
     "socket.io": "^2.0.3"
   }
